@@ -40,27 +40,28 @@ top
 
 `st` — Steal Time — ресурсы CPU, "заимствованные" гипервизором для других задач; на физических серверах равно нулю
 
-
-    inode - It is a data structure in Unix-like file systems (Linux, macOS), a file "passport" that stores metadata (information about the file, not the data itself) such as size, owner, access rights, creation/modification time, and pointers to physical data blocks on disk, but not the file name. which is stored separately. 
+```
+inode - It is a data structure in Unix-like file systems (Linux, macOS), a file "passport" that stores metadata (information about the file, not the data itself) such as size, owner, access rights, creation/modification time, and pointers to physical data blocks on disk, but not the file name. which is stored separately. 
     
-    Each file, directory, or object in the system has its own unique inode, and if they run out, new files cannot be created, even if there is free space.
+Each file, directory, or object in the system has its own unique inode, and if they run out, new files cannot be created, even if there is free space.
 
-    Each time a new file is created, it is provided with an inode number and a name, after which it is saved as unique entries in the directory. It is important to remember here that one of the ways to exhaust free space on the file system is to use all Inodes. This means that even if you have free disk space, you still won't be able to create a new file. When all the Inodes in your system are in use, it can cause the system to suddenly stop.
+Each time a new file is created, it is provided with an inode number and a name, after which it is saved as unique entries in the directory. It is important to remember here that one of the ways to exhaust free space on the file system is to use all Inodes. This means that even if you have free disk space, you still won't be able to create a new file. When all the Inodes in your system are in use, it can cause the system to suddenly stop.
 
-    The number of inodes on the disk is static. This means that if you have a lot of files, the inodes may run out before the disk space runs out. As soon as the file system runs out, all new files and folders will be rejected. There will be no negative consequences until then. When inodes is 100% used, you will start to notice:
+The number of inodes on the disk is static. This means that if you have a lot of files, the inodes may run out before the disk space runs out. As soon as the file system runs out, all new files and folders will be rejected. There will be no negative consequences until then. When inodes is 100% used, you will start to notice:
 
-    - Data loss
-    - Application failures
-    - Restarting the OS
-    - Failure to restart processes
-    - Periodic tasks will not be performed.
+- Data loss
+- Application failures
+- Restarting the OS
+- Failure to restart processes
+- Periodic tasks will not be performed.
 
-    There are two types of inode quotas: soft and hard. If you exceed the soft quota, you will still be able to create files. If you exceed the limit, you won't be able to.
+There are two types of inode quotas: soft and hard. If you exceed the soft quota, you will still be able to create files. If you exceed the limit, you won't be able to.
 
-    Many functions of your hosting account require the creation of files. If you exceed the hard limit, you will not be able to add new web pages, receive emails, install software, or perform many familiar tasks.
+Many functions of your hosting account require the creation of files. If you exceed the hard limit, you will not be able to add new web pages, receive emails, install software, or perform many familiar tasks.
 
-    It is better to reduce inode usage by deleting files long before you reach the hard limit.
+It is better to reduce inode usage by deleting files long before you reach the hard limit.
 
+```
 
 ## The "out of inodes problem is
 **Symptom:** It is impossible to create new files or directories, although there is still disk space.
