@@ -42,13 +42,15 @@ top
 
 ```
 inode - It is a data structure in Unix-like file systems (Linux, macOS), 
-a file "passport" that stores metadata (information about the file, not the data itself) such as size, owner, access rights, creation/modification time, and pointers to physical data blocks on disk, 
+a file "passport" that stores metadata (information about the file, not the data itself) such as size, owner, 
+access rights, creation/modification time, and pointers to physical data blocks on disk, 
 but not the file name. which is stored separately. 
     
 Each file, directory, or object in the system has its own unique inode, and if they run out, new files 
 cannot be created, even if there is free space.
 
-Each time a new file is created, it is provided with an inode number and a name, after which it is saved as unique entries in the directory. 
+Each time a new file is created, it is provided with an inode number and a name, 
+after which it is saved as unique entries in the directory. 
 It is important to remember here that one of the ways to exhaust free space on the file system is to use all Inodes. 
 This means that even if you have free disk space, you still won't be able to create a new file. 
 When all the Inodes in your system are in use, it can cause the system to suddenly stop.
@@ -65,11 +67,13 @@ When inodes is 100% used, you will start to notice:
 - Failure to restart processes
 - Periodic tasks will not be performed.
 
-There are two types of inode quotas: soft and hard. If you exceed the soft quota, you will still be able to create files. 
+There are two types of inode quotas: soft and hard. 
+If you exceed the soft quota, you will still be able to create files. 
 If you exceed the limit, you won't be able to.
 
 Many functions of your hosting account require the creation of files. 
-If you exceed the hard limit, you will not be able to add new web pages, receive emails, install software, or perform many familiar tasks.
+If you exceed the hard limit, you will not be able to add new web pages, receive emails, 
+install software, or perform many familiar tasks.
 
 It is better to reduce inode usage by deleting files long before you reach the hard limit.
 
