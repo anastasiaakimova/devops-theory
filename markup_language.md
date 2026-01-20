@@ -42,9 +42,9 @@ What it looks like
 - Docker, Terraform outputs
 - Web applications
 
-✅ Simple
-✅ Easy to parse
-❌ No comments
+✅ Simple <br>
+✅ Easy to parse <br>
+❌ No comments <br>
 
 
 ## YAML (YAML Ain’t Markup Language)
@@ -77,7 +77,7 @@ enabled: true
 - GitLab CI / GitHub Actions
 - Docker Compose
 
-❌ Parsing is more complex
+❌ Parsing is more complex <br>
 
 
 ## XML (eXtensible Markup Language)
@@ -105,6 +105,6 @@ What it looks like
 - Configuration files (older tools)
 - Java ecosystems (Spring, Maven POM)
 
-✅ Very strict
-✅ Good for complex documents
-❌ Less popular in modern DevOps
+✅ Very strict <br>
+✅ Good for complex documents <br>
+❌ Less popular in modern DevOps <br>
