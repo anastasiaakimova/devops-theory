@@ -145,17 +145,15 @@ In Bash, set is a **built-in command used** to **control shell behavior** and **
 |`set -o pipefail` | Fail on pipeline errors <br> By default, pipelines return the **last command’s exit code.** <br> This option makes the pipeline fail if **any command fails**. <br> Without pipefail → might succeed <br> With pipefail → ❌ fails correctly |
 
 ### The recommended safe mode
-You’ll see this at the top of many professional scripts:
-`set -euo pipefail`
-Meaning:
-`-e` → exit on error
-`-u` → error on unset variables
-`-o pipefail` → detect pipeline failures
+You’ll see this at the top of many professional scripts: <br>
+`set -euo pipefail` <br>
+Meaning: 
+- `-e` → exit on error
+- `-u` → error on unset variables
+- `-o pipefail` → detect pipeline failures
 
 #### Turn it off
 `set +x`
-
-
 
 ## If conditions
 
