@@ -137,6 +137,26 @@ In Bash, set is a **built-in command used** to **control shell behavior** and **
 - Changes how scripts behave
 - Helps with debugging and safety
 
+|||
+|--|---|
+|`set -e`| exit on error <br> Stops the script if any command fails |
+|`set -u`| Undefined variables are errors <br>Catches bugs caused by typos or missing env vars. <br> Errors if you use an unset variable <br> ✅ Prevents silent bugs |
+|`set -x` | Debug mode (trace) <br> Prints commands before executing them. <br> Shows expanded variables <br> ✅ Great for debugging pipelines and scripts |       
+|`set -o pipefail` | Fail on pipeline errors <br> By default, pipelines return the **last command’s exit code.** <br> This option makes the pipeline fail if **any command fails**. <br> Without pipefail → might succeed <br> With pipefail → ❌ fails correctly |
+
+### The recommended safe mode
+You’ll see this at the top of many professional scripts:
+`set -euo pipefail`
+Meaning:
+`-e` → exit on error
+`-u` → error on unset variables
+`-o pipefail` → detect pipeline failures
+
+#### Turn it off
+`set +x`
+
+
+
 ## If conditions
 
 ```
