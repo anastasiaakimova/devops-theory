@@ -1,0 +1,40 @@
+ARG AND_DOCKER_PROXY_REGISTRY_NAME
+
+FROM ${AND_DOCKER_PROXY_REGISTRY_NAME}/golang:1.25-alpine AS builder
+
+WORKDIR /app
+
+RUN apk add --no-cache git
+
+ARG GIT_USER
+ARG GIT_TOKEN
+ENV GOPRIVATE=git.andersenlab.com
+
+COPY go.mod go.sum ./
+
+RUN git config --global url."https://${GIT_USER}:${GIT_TOKEN}@git.andersenlab.com".insteadOf "https://git.andersenlab.com" && \
+    go mod download && \
+    rm -f /root/.gitconfig
+
+COPY . .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o pretty-go ./cmd/app/main.go
+
+FROM ${AND_DOCKER_PROXY_REGISTRY_NAME}/alpine:3.19
+
+RUN apk --no-cache add ca-certificates
+
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+WORKDIR /app
+
+COPY --from=builder /app/pretty-go .
+
+COPY migrations ./migrations
+COPY data/polish-codes-for-validation.csv ./data/polish-codes-for-validation.csv
+
+RUN chown appuser:appgroup /app
+
+USER appuser
+
+CMD ["./pretty-go"]
